@@ -1,4 +1,15 @@
+import { useTranslation } from "react-i18next";
+
 export default function Footer() {
+  const { t, i18n } = useTranslation();
+
+  const handleLanguageChange = (event) => {
+    const newLang = event.target.value;
+    i18n.changeLanguage(newLang);
+
+    localStorage.setItem("lang", newLang);
+  };
+
   return (
     <footer class="bg-white dark:border-t-[1px] dark:border-green200 dark:bg-clip-padding backdrop-filter dark:backdrop-filter backdrop-blur-sm dark:backdrop-blur-sm bg-opacity-10 dark:bg-opacity-10">
       <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -19,19 +30,21 @@ export default function Footer() {
           <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-black sm:mb-0 dark:text-white">
             <li>
               <a href="#" class="hover:underline me-4 md:me-6">
-                Biz haqimizda
+                {t("blogs")}
               </a>
             </li>
             <li>
               <a href="#" class="hover:underline me-4 md:me-6">
-                Shartlar
+                foodme@oddmenu.com
               </a>
             </li>
 
-            <li>
-              <a href="#" class="hover:underline">
-                Bog'lanish
-              </a>
+            <li className="text-black">
+              <select onChange={handleLanguageChange} value={i18n.language}>
+                <option value="en">{t("english")}</option>
+                <option value="uz">{t("uzbek")}</option>
+                <option value="ru">{t("russion")}</option>
+              </select>
             </li>
           </ul>
         </div>

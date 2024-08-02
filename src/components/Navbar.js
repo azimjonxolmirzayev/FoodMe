@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "./Button";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -17,7 +18,7 @@ function Navbar() {
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
-          <Button text={"Boshlash"} onClick={console.log("Click")} />
+          <Button text={t("createmenu")} onClick={console.log("Click")} />
 
           <button
             onClick={toggleMenu}
@@ -50,20 +51,17 @@ function Navbar() {
         >
           <ul className="flex flex-col font-medium font-['SpaceGrotesk'] p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-orange-400 md:dark:bg-orange-400 dark:border-orange-400">
             <li>
-              <a href="#service">Afzalliklar</a>
+              <a href="#afzalliklar">{t("adventages")}</a>
             </li>
             <li>
-              <a href="#">Xizmatlar</a>
+              <a href="#xizmatlar">{t("service")}</a>
             </li>
             <li>
-              <a href="#">Foydalanish</a>
+              <a href="#price">{t("price")}</a>
             </li>
             <li>
-              <a href="#">Narxlar</a>
-            </li>
-            <li>
-              <a href="#">
-                <button>Bepul sinov</button>
+              <a href="#bepulsinov">
+                <button>{t("freetrial")}</button>
               </a>
             </li>
           </ul>

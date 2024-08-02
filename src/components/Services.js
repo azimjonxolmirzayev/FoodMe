@@ -4,66 +4,54 @@ import searchengine from "../assets/searchengine.png";
 import analytics from "../assets/alanytics.png";
 import mijoz from "../assets/mijoz.png";
 import tajriba from "../assets/tajriba.png";
+import { useTranslation } from "react-i18next";
 
 function Services() {
   const { ref: serviceRef, inView: serviceInView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
+  const { t, i18n } = useTranslation();
 
   return (
     <div
-      id="service"
+      id="afzalliklar"
       className="container max-w-screen-xl dark:text-white font-['SpaceGrotesk'] flex-col md:flex-row gap-12 md:gap-16 items-center justify-center mx-auto p-4 md:p-6 lg:p-8"
     >
       <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center w-full md:w-auto">
         <h1 className="bg-green p-1 text-3xl rounded text-black text-center font-medium md:mb-0 mb-4">
-          Afzalliklar
+          {t("adventages")}
         </h1>
         <p className="text-center md:text-left w-full md:w-auto text-black dark:text-white">
-          Raqamli menyu bilan ishlash osonroq. Menyuni yuklash tezroq. Raqamli{" "}
-          <br />
-          menyuda ko'proq foydali ma'lumotlar mavjud.
+          {t("qrmenu")}
         </p>
       </div>
       <div
         ref={serviceRef}
-        className={`w-full justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 mt-28 transition-transform duration-500 ease-in-out ${
-          serviceInView
-            ? "transform translate-y-0 opacity-100"
-            : "transform translate-y-10 opacity-0"
-        }`}
+        className={`w-full justify-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 mt-28 transition-transform duration-500 ease-in-out`}
       >
         <ServiceItem
-          main={"Mijoz tajribasini"}
-          submain={"oshirish"}
-          title={
-            "Raqamli menyu bilan ishlash osonroq. Menyuni yuklash tezroq. Raqamli menyuda ko'proq foydali ma'lumotlar mavjud."
-          }
+          main={t("serviceItem1main")}
+          submain={t("serviceItem1submain")}
+          title={t("qrmenu")}
           image={tajriba}
         />
         <ServiceItem
-          main={"QR kod menyusi"}
-          submain={"savdoni oshiradi"}
+          main={t("serviceItem2main")}
+          submain={t("serviceItem2submain")}
           image={searchengine}
-          title={
-            "Qulay menyu tilini almashtirish - ko'proq mehmonlar-chet elliklar."
-          }
+          title={t("serviceItem2longtext")}
         />
         <ServiceItem
-          main={"Biznes resurslarini"}
-          submain={"Tejash"}
+          main={t("serviceItem3main")}
+          submain={t("serviceItem3submain")}
           image={analytics}
-          title={
-            "Raqamli QR kod menyusi ko'proq sotadi. Suratlar ishtahani oshiradi - tuyadi o'rtacha chekni oshiradi."
-          }
+          title={t("serviceItem3longtext")}
         />
         <ServiceItem
-          main={"Yangi mijozlarni"}
-          submain={"jalb qilish"}
-          title={
-            "Bizning QR menyumiz darhol ishlaydi. Ilovalarni o'rnatish, terminallarni sotib olish, tasdiqlashni kutish va hokazo larsiz."
-          }
+          main={t("serviceItem4main")}
+          submain={t("serviceItem4submain")}
+          title={t("serviceItem4longtext")}
           image={mijoz}
         />
       </div>

@@ -2,12 +2,14 @@ import Button from "./Button";
 import DayImage from "../assets/order.jpg";
 import NightImage from "../assets/orderblack.png";
 import { useEffect, useState, useRef } from "react";
-import "tailwindcss/tailwind.css"; // Tailwind CSS ni import qilish
+import "tailwindcss/tailwind.css";
+import { useTranslation } from "react-i18next";
 
 function Header() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const headerRef = useRef(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -21,7 +23,7 @@ function Header() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Elementning kamida 10% ko'rinsa
+      { threshold: 0.1 }
     );
 
     if (headerRef.current) {
@@ -46,17 +48,15 @@ function Header() {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-center md:text-left">
+      <div className="text-center  md:text-left">
         <h1 className="text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight">
-          Muvaffaqiyat uchun
-          <br /> raqamli Menyu <br /> navigatsiyasi
+          {t("headermain")}
         </h1>
         <p className="mb-6 md:mb-8 text-sm md:text-base">
-          Bizning maxsulot ijtimoiy media marketingi va oson interface kabi bir
-          qator xizmatlar orqali korxonalarning onlayn rivojlanishi va
-          muvaffaqiyat yordam beradi.
+          {t("headersubtext")}
         </p>
-        <Button text={"Boshlash"} onClick={handleClick} />
+        <Button text={t("createmenu")} onClick={handleClick} />
+        <Button text={t("menuexample")} onClick={handleClick} />
       </div>
       <div className="flex-shrink-0">
         <img
