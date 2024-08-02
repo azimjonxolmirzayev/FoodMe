@@ -4,8 +4,11 @@ import NightImage from "../assets/orderblack.png";
 import { useEffect, useState, useRef } from "react";
 import "tailwindcss/tailwind.css";
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 function Header() {
+  const history = useHistory();
+
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const headerRef = useRef(null);
@@ -38,7 +41,7 @@ function Header() {
   }, []);
 
   const handleClick = () => {
-    console.log("Click");
+    history.push("/demo");
   };
 
   return (
@@ -55,7 +58,7 @@ function Header() {
         <p className="mb-6 md:mb-8 text-sm md:text-base">
           {t("headersubtext")}
         </p>
-        <Button text={t("createmenu")} onClick={handleClick} />
+        <Button text={t("createmenu")} />
         <Button text={t("menuexample")} onClick={handleClick} />
       </div>
       <div className="flex-shrink-0">

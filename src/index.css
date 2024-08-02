@@ -18,3 +18,7 @@ body {
     @apply bg-black text-white;
   }
 }
+.back {
+  /* background-image: url("https://indiamap.com/images/dashanzi_nightlife_image.jpg"); */
+  background-image: url("assets/restaraunt.jpg");
+}
