@@ -426,15 +426,7 @@ function AdminPage() {
   const navigate = useNavigate();
   const BASE_URL = "https://fastapi-example-ito8.onrender.com";
 
-  const [cafeDetails, setCafeDetails] = useState({
-    name: "",
-    location: "",
-    description: "",
-    phonenumber: "",
-    wifipass: "",
-    logo_url: "",
-    image_url: "",
-  });
+  const [cafeDetails, setCafeDetails] = useState({ name: "" });
 
   useEffect(() => {
     const fetchCafeDetailsAndMenus = async () => {
@@ -498,11 +490,16 @@ function AdminPage() {
     }
 
     try {
-      const response = await axios.put(`${BASE_URL}/cafes/${cafeId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.put(
+        `${BASE_URL}/cafes/${cafeId}`,
+        cafeDetails, // Yangilanish uchun ma'lumotlarni yuborish
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json", // Agar server JSON formatida ma'lumot kutayotgan bo'lsa
+          },
+        }
+      );
 
       setCafeDetails(response.data);
       setNotification({
@@ -510,7 +507,10 @@ function AdminPage() {
         type: "success",
       });
     } catch (error) {
-      console.error("Kafe ma'lumotlarini yangilashda xatolik:", error);
+      console.error(
+        "Kafe ma'lumotlarini yangilashda xatolik:",
+        error.response ? error.response.data : error.message
+      );
       setNotification({
         message:
           "Yangilashda xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
@@ -734,6 +734,11 @@ function AdminPage() {
         >
           Saqlash
         </button>
+        {notification.message && (
+          <div className={`notification ${notification.type}`}>
+            {notification.message}
+          </div>
+        )}
       </div>
 
       <div className="bg-tahiti p-4 rounded-lg shadow-lg">
