@@ -498,11 +498,15 @@ function AdminPage() {
     }
 
     try {
-      const response = await axios.put(`${BASE_URL}/cafes/user/cafe`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.put(
+        `${BASE_URL}/cafes/user/cafe`,
+        newCafeDetails,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setCafeDetails(response.data);
       setNotification({
