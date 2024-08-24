@@ -4,10 +4,10 @@ import NightImage from "../assets/orderblack.png";
 import { useEffect, useState, useRef } from "react";
 import "tailwindcss/tailwind.css";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -40,8 +40,18 @@ function Header() {
     };
   }, []);
 
+  const navclick = () => {
+    const accessToken = sessionStorage.getItem("access_token");
+
+    if (accessToken) {
+      navigate("/admin");
+    } else {
+      navigate("/registration");
+    }
+  };
+
   const handleClick = () => {
-    history.push("/demo");
+    navigate("/demo");
   };
 
   return (
@@ -51,14 +61,14 @@ function Header() {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-center  md:text-left">
+      <div className="text-center md:text-left">
         <h1 className="text-2xl md:text-4xl lg:text-5xl mb-6 md:mb-8 leading-tight">
           {t("headermain")}
         </h1>
         <p className="mb-6 md:mb-8 text-sm md:text-base">
           {t("headersubtext")}
         </p>
-        <Button text={t("createmenu")} />
+        <Button text={t("createmenu")} onClick={navclick} />
         <Button text={t("menuexample")} onClick={handleClick} />
       </div>
       <div className="flex-shrink-0">

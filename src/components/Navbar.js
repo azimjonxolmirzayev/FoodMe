@@ -1,12 +1,25 @@
 import { useState } from "react";
 import Button from "./Button";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navclick = () => {
+    const accessToken = sessionStorage.getItem("access_token");
+
+    if (accessToken) {
+      navigate("/admin");
+    } else {
+      navigate("/registration");
+    }
   };
 
   return (
@@ -18,7 +31,7 @@ function Navbar() {
           </span>
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse ">
-          <Button text={t("createmenu")} onClick={console.log("Click")} />
+          <Button text={t("createmenu")} onClick={navclick} />
 
           <button
             onClick={toggleMenu}

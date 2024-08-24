@@ -2,11 +2,11 @@ import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
 
 function Xizmatlar() {
-  const { ref: serviceRef, inView: serviceInView } = useInView({
+  const { ref: serviceRef } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div
