@@ -769,16 +769,16 @@ function AdminPage() {
           Yangi Menyu Qo'shish
         </button>
       </div>
-      <div className="bg-tahiti p-4 mt-4 rounded-lg flex justify-center items-center shadow-lg">
+      <div className="bg-tahiti p-4 mt-4 rounded-lg flex justify-center flex-wrap gap-5 items-center shadow-lg">
         <button
           onClick={handleQRCodeClick}
-          className="bg-purple text-white px-4 py-2 rounded mb-4"
+          className="bg-purple text-white rounded"
         >
           QR kod yaratish
         </button>
         <a
           href={qrCodeData}
-          className="qr-code-link"
+          className="qr-code-link text-purple"
           target="_blank"
           rel="noopener noreferrer"
         >
