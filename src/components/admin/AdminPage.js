@@ -722,8 +722,8 @@ function AdminPage() {
         <h2 className="text-xl font-semibold mb-4">Kafe nomini yangilash</h2>
         <input
           type="text"
-          value={cafeDetails.new_name || ""}
-          onChange={(e) => setCafeDetails({ new_name: e.target.value })}
+          value={cafeDetails.name}
+          onChange={(e) => setCafeDetails({ name: e.target.value })}
           className="border border-grey p-2 rounded mb-4 w-full bg-dark text-white"
         />
         <button
