@@ -492,11 +492,11 @@ function AdminPage() {
     try {
       const response = await axios.put(
         `${BASE_URL}/cafes/${cafeId}`,
-        cafeDetails, // Yangilanish uchun ma'lumotlarni yuborish
+        { new_name: cafeDetails.name }, // Modelga mos keladigan formatda yuborish
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json", // Agar server JSON formatida ma'lumot kutayotgan bo'lsa
+            "Content-Type": "application/json",
           },
         }
       );
@@ -722,10 +722,8 @@ function AdminPage() {
         <h2 className="text-xl font-semibold mb-4">Kafe nomini yangilash</h2>
         <input
           type="text"
-          value={cafeDetails.name}
-          onChange={(e) =>
-            setCafeDetails({ ...cafeDetails, name: e.target.value })
-          }
+          value={cafeDetails.new_name || ""}
+          onChange={(e) => setCafeDetails({ new_name: e.target.value })}
           className="border border-grey p-2 rounded mb-4 w-full bg-dark text-white"
         />
         <button
