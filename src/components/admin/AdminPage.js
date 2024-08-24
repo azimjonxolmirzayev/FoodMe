@@ -498,7 +498,7 @@ function AdminPage() {
     }
 
     try {
-      const response = await axios.put(`${BASE_URL}/cafes/user/cafe`, {
+      const response = await axios.put(`${BASE_URL}/cafes/${cafeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
