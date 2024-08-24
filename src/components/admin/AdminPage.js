@@ -772,7 +772,7 @@ function AdminPage() {
       <div className="bg-tahiti p-4 mt-4 rounded-lg flex justify-center flex-wrap gap-5 items-center shadow-lg">
         <button
           onClick={handleQRCodeClick}
-          className="bg-purple text-white rounded"
+          className="bg-purple text-whitep p-4 rounded"
         >
           QR kod yaratish
         </button>
