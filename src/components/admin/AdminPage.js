@@ -474,7 +474,7 @@ function AdminPage() {
   }, []);
 
   const handleQRCodeClick = () => {
-    setQrCodeData(`https://foodmenus.netlify.app/cafes/${cafeId}`);
+    setQrCodeData(`https://food-me-psi.vercel.app/cafes/${cafeId}`);
     setShowQRCodeModal(true);
   };
 
